@@ -1,24 +1,55 @@
 import React from 'react';
-import logo from './logo.svg';
+import InputField from './components/InputField'
 import './App.css';
 
-function App() {
+// Types that TypeScript allows - Strict Type Checking
+/* eslint-disable  */
+let name: string;
+let age: number | string; // | -> Union Type 
+let isChecked: boolean;
+let hobbies: string[]; // array of strings
+let role: [number, string]; // Tuple
+
+// TypeScript Alias: type and interface
+type Person = {
+  name: string;
+  age?: number; // ? makes property optional
+}
+let person: Person = {
+  name: "Steven",
+  age: 22,
+};
+
+let lotsOfPeople: Person[];
+
+// difference between void and never: void returns undefined, never doesn't return anything
+let printName: (name: string) => void;
+
+// function printName(name: string) {
+//   console.log(name)
+// }
+// printName("Steven")
+
+interface newPerson {
+  name: string;
+  age?: number;
+}
+
+interface Guy extends newPerson{
+  profession: string;
+}
+
+type X = Person & {
+  a: string;
+  b: number;
+}
+/* eslint-disable*/
+
+const App: React.FC = () => {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <span className="heading">Taskify</span>
+      <InputField />
     </div>
   );
 }
