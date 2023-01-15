@@ -4,3 +4,70 @@
     position: relative;
     align-items: center;
 }
+
+.taskInput {
+    width: 100%;
+    border-radius: 50px;
+    padding: 20px 30px;
+    font-size: 25px;
+    border: none;
+    transition: 0.2s;
+    box-shadow: inset 0 0 5px black;
+}
+.taskInput:focus {
+    box-shadow: 0 0 10px 1000px rgba(0,0,0,0.5);
+    outline: none;
+}
+
+.taskSubmit {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    margin: 12px;
+    border-radius: 50px;
+    right: 0px;
+    border: none;
+    font-size: 15px;
+    background-color: #2f74c0;
+    color: white;
+    transition: 0.2s all;
+    box-shadow: 0 0 10px black;
+}
+.taskSubmit:hover{
+    background-color: #388ae2;
+}
+.taskSubmit:active{
+    transform: scale(0.8);
+    box-shadow: 0 0 5px black;
+}
+
+.todos {
+    display: flex;
+    justify-content: space-evenly;
+    width: 90%;
+    flex-wrap: wrap;
+}
+
+.singleTodo {
+    display: flex;
+    width: 29.5%;
+    border-radius: 5px;
+    padding: 20px;
+    margin-top: 15px;
+    background-image: url("https://thumbs.dreamstime.com/b/color-paint-stains-abstract-painting-canvas-random-pattern-mixed-media-background-color-paint-stains-abstract-painting-234366132.jpg")
+}
+.singleTodoText {
+    flex: 1;
+    padding: 5px;
+    border: none;
+    font-size: 20px;
+}
+.singleTodoText:focus {
+    outline: none;
+}
+
+.icon {
+    margin-left: 10px;
+    font-size: 25px;
+    cursor: pointer;
+}

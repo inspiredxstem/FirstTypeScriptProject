@@ -1,9 +1,12 @@
-import React from 'react';
-import InputField from './components/InputField'
+import React, {useState} from 'react';
+import InputField from './components/InputField';
+import TodoList from './components/TodoList';
+import {Todo} from './model'
 import './App.css';
 
+
+/* 
 // Types that TypeScript allows - Strict Type Checking
-/* eslint-disable  */
 let name: string;
 let age: number | string; // | -> Union Type 
 let isChecked: boolean;
@@ -25,10 +28,10 @@ let lotsOfPeople: Person[];
 // difference between void and never: void returns undefined, never doesn't return anything
 let printName: (name: string) => void;
 
-// function printName(name: string) {
-//   console.log(name)
-// }
-// printName("Steven")
+function printName(name: string) {
+  console.log(name)
+}
+printName("Steven") 
 
 interface newPerson {
   name: string;
@@ -42,14 +45,24 @@ interface Guy extends newPerson{
 type X = Person & {
   a: string;
   b: number;
-}
-/* eslint-disable*/
+} */
 
 const App: React.FC = () => {
+  const [todo, setTodo] = useState<string>("") //define a string with the brackets <>
+  const [todos, setTodos] = useState<Todo[]>([])
+
+  const handleAdd = (e: React.FormEvent): void => {
+    e.preventDefault();
+    setTodos([...todos, {id: Date.now(), todo: todo, isDone: false}])
+    setTodo("")
+  };
+
+  console.log(todo)
   return (
     <div className="App">
       <span className="heading">Taskify</span>
-      <InputField />
+      <InputField todo={todo} setTodo={setTodo} handleAdd={handleAdd}/>
+      <TodoList todos={todos} setTodos={setTodos}/>
     </div>
   );
 }
